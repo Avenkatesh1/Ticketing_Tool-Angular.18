@@ -7,29 +7,28 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './new-ticket.component.html',
-  styleUrl: './new-ticket.component.css'
+  styleUrl: './new-ticket.component.css',
 })
 export class NewTicketComponent {
-   
-  masterSrv= inject(MasterService);
-  deptList: any[]=[];
-  pCategoryList: any[]=[];
-  cCategoryList: any[]=[];
-  filterCategory: any[]=[];
+  masterSrv = inject(MasterService);
+  deptList: any[] = [];
+  pCategoryList: any[] = [];
+  cCategoryList: any[] = [];
+  filterCategory: any[] = [];
   selectPCategory: string = '';
 
   newTicketObj: any = {
-    "employeeId": 0,
-    "severity": "",
-    "childCategoryId": 0,
-    "deptId": 0,
-    "requestDetails": ""
-  }
+    employeeId: 0,
+    severity: '',
+    childCategoryId: 0,
+    deptId: 0,
+    requestDetails: '',
+  };
 
   ngOnInit(): void {
-    const loggedUserData =  localStorage.getItem('ticketUser');
-    if(loggedUserData != null) {
-      const userData =  JSON.parse(loggedUserData);
+    const loggedUserData = localStorage.getItem('ticketUser');
+    if (loggedUserData != null) {
+      const userData = JSON.parse(loggedUserData);
       this.newTicketObj.employeeId = userData.employeeId;
     }
     this.getDept();
@@ -39,32 +38,34 @@ export class NewTicketComponent {
 
   onCreateTicket() {
     debugger;
-    this.masterSrv.newTicket(this.newTicketObj).subscribe((res:any)=>{
-      if(res.result){
-        alert("Ticket Created Succefully")
+    this.masterSrv.newTicket(this.newTicketObj).subscribe((res: any) => {
+      if (res.result) {
+        alert('Ticket Created Succefully');
       } else {
-        alert(res.message)
+        alert(res.message);
       }
-    })
+    });
   }
 
   onCategoryChnage() {
-    this.filterCategory =  this.cCategoryList.filter(x=>x.parentCategoryName == this.selectPCategory);
+    this.filterCategory = this.cCategoryList.filter(
+      (x) => x.parentCategoryName == this.selectPCategory
+    );
   }
 
   getDept() {
-    this.masterSrv.getAllDept().subscribe((res:any)=>{
-      this.deptList =  res.data;
-    })
+    this.masterSrv.getAllDept().subscribe((res: any) => {
+      this.deptList = res.data;
+    });
   }
   getpCategory() {
-    this.masterSrv.getAllpCategory().subscribe((res:any)=>{
-      this.pCategoryList =  res.data;
-    })
+    this.masterSrv.getAllpCategory().subscribe((res: any) => {
+      this.pCategoryList = res.data;
+    });
   }
   getCCategory() {
-    this.masterSrv.getAllCCategory().subscribe((res:any)=>{
-      this.cCategoryList =  res.data;
-    })
+    this.masterSrv.getAllCCategory().subscribe((res: any) => {
+      this.cCategoryList = res.data;
+    });
   }
 }

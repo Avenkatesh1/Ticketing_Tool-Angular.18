@@ -18,16 +18,17 @@
                             </thead>
                             <tbody>
                                 @for (item of gridList; track $index) {
-                                    <tr>
-                                        <td>{{$index+1}}</td>
-                                        <td>{{item.categoryName}}</td>
-                                        <td> </td>
-                                        <td class="text-center">
-                                            <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
-                                            <button class="btn btn-danger mx-2" (click)="onDelete(item.categoryId)">Delete</button>
-                                        </td>
-                                    </tr>
-                                } 
+                                <tr>
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.categoryName}}</td>
+                                    <td> </td>
+                                    <td class="text-center">
+                                        <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
+                                        <button class="btn btn-danger mx-2"
+                                            (click)="onDelete(item.categoryId)">Delete</button>
+                                    </td>
+                                </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -49,7 +50,7 @@
 
                     <div class="col-12">
                         <label for="">Department</label>
-                        <select [(ngModel)]="newObj.deptId"  class="form-select" >
+                        <select [(ngModel)]="newObj.deptId" class="form-select">
                             <option value="">Select Dept</option>
                             @for (item of deptList; track $index) {
                             <option [value]="item.deptId">{{item.deptName}}</option>

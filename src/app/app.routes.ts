@@ -10,47 +10,47 @@ import { NewTicketComponent } from './pages/new-ticket/new-ticket.component';
 import { TicketListComponent } from './pages/ticket-list/ticket-list.component';
 
 export const routes: Routes = [
-    {
-        path:"",
-        redirectTo:"login",
-        pathMatch:"full"
-    },
-    {
-        path:"login",
-        component:LoginComponent
-    },
-    {
-        path:"",
-        component:LayoutComponent,
-        children:[
-            {
-                path:"dashboard",
-                component:DashboardComponent
-            },
-            {
-                path:"department",
-                component:DepartmentComponent
-            },
-            {
-                path:'parent-category',
-                component:ParentCategoryComponent
-            },
-            {
-                path:'child-category',
-                component:ChildCategoryComponent
-            },
-            {
-                path:'employee',
-                component:EmployeeComponent
-            },
-            {
-                path:'new-ticket',
-                component:NewTicketComponent
-            },
-            {
-                path:'ticket-list',
-                component:TicketListComponent
-            }
-        ]
-    }
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+      {
+        path: 'department',
+        component: DepartmentComponent,
+      },
+      {
+        path: 'parent-category',
+        component: ParentCategoryComponent,
+      },
+      {
+        path: 'child-category',
+        component: ChildCategoryComponent,
+      },
+      {
+        path: 'employee',
+        component: EmployeeComponent,
+      },
+      {
+        path: 'new-ticket',
+        component: NewTicketComponent,
+      },
+      {
+        path: 'ticket-list',
+        component: TicketListComponent,
+      },
+    ],
+  },
 ];

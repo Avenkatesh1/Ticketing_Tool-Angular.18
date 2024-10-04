@@ -7,12 +7,11 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet, RouterLink],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css'
+  styleUrl: './layout.component.css',
 })
 export class LayoutComponent {
-   
   // router = inject(Router);
-constructor(private router: Router){}
+  constructor(private router: Router) {}
   onLogOff() {
     localStorage.removeItem('ticketUser');
     this.router.navigateByUrl('login');
