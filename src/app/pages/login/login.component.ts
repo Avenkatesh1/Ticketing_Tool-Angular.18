@@ -8,27 +8,30 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   masterSer = inject(MasterService);
-  router = inject(Router)
+  router = inject(Router);
 
-  loginObj:any ={
-     "emailId":"",
-     "password":""
+  loginObj: any = {
+    emailId: '',
+    password: '',
+  };
+  constructor() {}
+
+  ngOnInit(): void {
+    this.onLogin();
   }
- constructor(){}
-
- ngOnInit(): void {
-   this.onLogin();
- }
-  onLogin(){
-    if(this.loginObj.emailId == "admin@gmail.com" && this.loginObj.password == "112333" ){
-      alert("Login Successfully");
-      this.router.navigateByUrl("/dashboard");
-    }else{
-      alert("Invalid Credentials")
+  onLogin() {
+    if (
+      this.loginObj.emailId == 'admin@gmail.com' &&
+      this.loginObj.password == '112333'
+    ) {
+      alert('Login Successfully');
+      this.router.navigateByUrl('/dashboard');
+    } else {
+      alert('Invalid Credentials');
     }
     // this.masterSer.login(this.loginObj).subscribe((result:any)=>{
     //   if(result.res){

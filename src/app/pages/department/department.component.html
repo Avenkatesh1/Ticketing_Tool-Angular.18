@@ -24,7 +24,8 @@
                                     <td>{{item.createdDate| date:'dd-MMM-yyyy' }}</td>
                                     <td class="text-center">
                                         <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
-                                        <button class="btn btn-danger mx-2"(click)="onDelete(item.deptId)">Delete</button>
+                                        <button class="btn btn-danger mx-2"
+                                            (click)="onDelete(item.deptId)">Delete</button>
                                     </td>
                                 </tr>
                                 }

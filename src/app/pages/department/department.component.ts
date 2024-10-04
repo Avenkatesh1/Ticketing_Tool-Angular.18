@@ -8,79 +8,77 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule, DatePipe],
   templateUrl: './department.component.html',
-  styleUrl: './department.component.css'
+  styleUrl: './department.component.css',
 })
-export class DepartmentComponent implements OnInit{
- 
-  masterSrc= inject(MasterService);
-  deptList: any[]=[];
+export class DepartmentComponent implements OnInit {
+  masterSrc = inject(MasterService);
+  deptList: any[] = [];
   newDeptObj: any = {
-    "deptId": 0,
-    "deptName": "",
-    "createdDate": ""
-  }
+    deptId: 0,
+    deptName: '',
+    createdDate: '',
+  };
 
   ngOnInit(): void {
     this.getDept();
   }
 
   getDept() {
-    this.masterSrc.getAllDept().subscribe((res:any)=>{
+    this.masterSrc.getAllDept().subscribe((res: any) => {
       debugger;
       this.deptList = res.data;
-    })
+    });
   }
 
   saveDept() {
     debugger;
-    this.masterSrc.createNewDept(this.newDeptObj).subscribe((res:any)=>{
+    this.masterSrc.createNewDept(this.newDeptObj).subscribe((res: any) => {
       debugger;
-      if(res.result) {
-        alert("Dept Created Success");
+      if (res.result) {
+        alert('Dept Created Success');
         this.getDept();
         this.resetForm();
-        }else {
-        alert(res.message)
+      } else {
+        alert(res.message);
       }
-    }) 
+    });
   }
   onEdit(data: any) {
     this.newDeptObj = data;
   }
   updateDept() {
     debugger;
-    this.masterSrc.updateDept(this.newDeptObj).subscribe((res:any)=>{
+    this.masterSrc.updateDept(this.newDeptObj).subscribe((res: any) => {
       debugger;
-      if(res.result) {
-        alert("Dept Updated Success");
+      if (res.result) {
+        alert('Dept Updated Success');
         this.getDept();
         this.resetForm();
       } else {
-        alert(res.message)
+        alert(res.message);
       }
-    }) 
+    });
   }
   onDelete(id: number) {
-    const isDelete = confirm("Are you sure want Delete");
-    if(isDelete) {
-      this.masterSrc.deleteDeptById(id).subscribe((res:any)=>{
+    const isDelete = confirm('Are you sure want Delete');
+    if (isDelete) {
+      this.masterSrc.deleteDeptById(id).subscribe((res: any) => {
         debugger;
-        if(res.result) {
-          alert("Dept Deleted Success");
+        if (res.result) {
+          alert('Dept Deleted Success');
           this.getDept();
         } else {
-          alert(res.message)
+          alert(res.message);
         }
-      }) 
+      });
     }
   }
 
   resetForm() {
     this.newDeptObj = {
-      "deptId": 0,
-      "deptName": "",
-      "createdDate": "",
+      deptId: 0,
+      deptName: '',
+      createdDate: '',
     };
   }
 }
-

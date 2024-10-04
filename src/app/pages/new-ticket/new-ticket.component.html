@@ -10,17 +10,17 @@
                         <label for="">Select Severity</label>
                         <select [(ngModel)]="newTicketObj.severity" class="form-select">
                             <option value="">Select</option>
-                            <option >Low</option>
-                            <option >Medium</option>
-                            <option >High</option>
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
                         </select>
                     </div>
                     <div class="col-3">
                         <label for="">Select Dept</label>
-                        <select [(ngModel)]="newTicketObj.deptId"  class="form-select">
+                        <select [(ngModel)]="newTicketObj.deptId" class="form-select">
                             <option value="">Select</option>
                             @for (item of deptList; track $index) {
-                                <option [value]="item.deptId">{{item.deptName}}</option>
+                            <option [value]="item.deptId">{{item.deptName}}</option>
                             }
                         </select>
                     </div>
@@ -28,10 +28,10 @@
                 <div class="row">
                     <div class="col-3">
                         <label for="">Select Parent category</label>
-                        <select  class="form-select" [(ngModel)]="selectPCategory" (change)="onCategoryChnage()">
+                        <select class="form-select" [(ngModel)]="selectPCategory" (change)="onCategoryChnage()">
                             <option value="">Select</option>
                             @for (item of pCategoryList; track $index) {
-                                <option [value]="item.categoryName">{{item.categoryName}}</option>
+                            <option [value]="item.categoryName">{{item.categoryName}}</option>
                             }
                         </select>
                     </div>
@@ -40,7 +40,7 @@
                         <select [(ngModel)]="newTicketObj.childCategoryId" class="form-select">
                             <option value="">Select</option>
                             @for (item of cCategoryList; track $index) {
-                                <option [value]="item.childCategoryId">{{item.categoryName}}</option>
+                            <option [value]="item.childCategoryId">{{item.categoryName}}</option>
                             }
                         </select>
                     </div>
@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class="col-6">
                         <label for="">Ticket Details</label>
-                        <textarea   [(ngModel)]="newTicketObj.requestDetails" class="form-control"></textarea>
+                        <textarea [(ngModel)]="newTicketObj.requestDetails" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="row">

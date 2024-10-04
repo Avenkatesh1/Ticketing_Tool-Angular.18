@@ -7,10 +7,9 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './employee.component.html',
-  styleUrl: './employee.component.css'
+  styleUrl: './employee.component.css',
 })
 export class EmployeeComponent {
-  
   masterSrc = inject(MasterService);
 
   gridList: any[] = [];
@@ -19,15 +18,15 @@ export class EmployeeComponent {
   isNewView: boolean = false;
 
   newObj: any = {
-    "employeeId": 0,
-    "employeeName":"",
-    "contactNo":"",
-    "emailId":"",
-    "deptId": 0,
-    "password":"",
-    "gender":"",
-    "role":""
-  }
+    employeeId: 0,
+    employeeName: '',
+    contactNo: '',
+    emailId: '',
+    deptId: 0,
+    password: '',
+    gender: '',
+    role: '',
+  };
 
   ngOnInit(): void {
     this.getGridData();
@@ -39,20 +38,20 @@ export class EmployeeComponent {
     this.masterSrc.getAllDept().subscribe((res: any) => {
       debugger;
       this.deptList = res.data;
-    })
+    });
   }
   getAllRoles() {
     this.masterSrc.getAllRoles().subscribe((res: any) => {
       debugger;
       this.roleList = res.data;
-    })
+    });
   }
 
   getGridData() {
     this.masterSrc.getAllEmp().subscribe((res: any) => {
       debugger;
       this.gridList = res.data;
-    })
+    });
   }
 
   save() {
@@ -60,13 +59,13 @@ export class EmployeeComponent {
     this.masterSrc.createEmp(this.newObj).subscribe((res: any) => {
       debugger;
       if (res.result) {
-        alert("Employee Created Success");
+        alert('Employee Created Success');
         this.getGridData();
         this.resetForm();
       } else {
-        alert(res.message)
+        alert(res.message);
       }
-    })
+    });
   }
   onEdit(data: any) {
     this.newObj = data;
@@ -77,38 +76,38 @@ export class EmployeeComponent {
     this.masterSrc.updateEmp(this.newObj).subscribe((res: any) => {
       debugger;
       if (res.result) {
-        alert("Employee Updated Success");
+        alert('Employee Updated Success');
         this.getGridData();
         this.resetForm();
       } else {
-        alert(res.message)
+        alert(res.message);
       }
-    })
+    });
   }
   onDelete(id: number) {
-    const isDelete = confirm("Are you sure want Delete");
+    const isDelete = confirm('Are you sure want Delete');
     if (isDelete) {
       this.masterSrc.deleteEmpById(id).subscribe((res: any) => {
         if (res.result) {
-          alert("Employee Deleted Success");
+          alert('Employee Deleted Success');
           this.getGridData();
         } else {
-          alert(res.message)
+          alert(res.message);
         }
-      })
+      });
     }
   }
 
-  resetForm(){
-   this.newObj = {
-      "employeeId": 0,
-      "employeeName":"",
-      "contactNo":"",
-      "emailId":"",
-      "deptId": 0,
-      "password":"",
-      "gender":"",
-      "role":""
-    }
+  resetForm() {
+    this.newObj = {
+      employeeId: 0,
+      employeeName: '',
+      contactNo: '',
+      emailId: '',
+      deptId: 0,
+      password: '',
+      gender: '',
+      role: '',
+    };
   }
 }
