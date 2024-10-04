@@ -38,11 +38,7 @@ export class DepartmentComponent implements OnInit{
       if(res.result) {
         alert("Dept Created Success");
         this.getDept();
-        this.newDeptObj = {
-          "deptId": 0,
-          "deptName": "",
-          "createdDate": "",
-        }
+        this.resetForm();
         }else {
         alert(res.message)
       }
@@ -58,11 +54,7 @@ export class DepartmentComponent implements OnInit{
       if(res.result) {
         alert("Dept Updated Success");
         this.getDept();
-        this.newDeptObj ={
-          "deptId": 0,
-          "deptName": "",
-          "createdDate": "",
-        }
+        this.resetForm();
       } else {
         alert(res.message)
       }
@@ -81,6 +73,14 @@ export class DepartmentComponent implements OnInit{
         }
       }) 
     }
+  }
+
+  resetForm() {
+    this.newDeptObj = {
+      "deptId": 0,
+      "deptName": "",
+      "createdDate": "",
+    };
   }
 }
 
