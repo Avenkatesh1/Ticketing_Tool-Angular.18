@@ -12,7 +12,8 @@ export class MasterService {
   // login(obj:any){
   //   return this.http.post(this.apiUrl + "Login", obj);
   // }
-  apiUrl: string = "https://freeapi.miniprojectideas.com/api/TicketsNew/";
+  apiUrl: string = "https://freeapi.gerasim.in/api/TicketsNew/";
+
 
   constructor(private http: HttpClient) { }
 
@@ -39,7 +40,7 @@ export class MasterService {
   }
  
   getAllpCategory() {
-    return this.http.get(`${this.apiUrl}GetParentCategory`)
+    return this.http.get(`${this.apiUrl}GetChildCategory`)
   }
   
   createpCategory(obj:any) {
@@ -50,7 +51,7 @@ export class MasterService {
     return this.http.put(`${this.apiUrl}UpdateParentCategory`,obj)
   }
   deletepCategoryById(id: number) {
-    return this.http.delete(`${this.apiUrl}DeleteParentCategory?id=${id}`)
+    return this.http.delete(`${this.apiUrl}DeleteChildCategory?id=${id}`)
   }
 
   getAllCCategory() {
